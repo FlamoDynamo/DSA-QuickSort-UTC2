@@ -1,32 +1,17 @@
 #include "Item.h"
 
-Item::Item(const std::string& name, int id, double price, int quantity) :
-    name_(name), id_(id), price_(price), quantity_(quantity) {}
+Item::Item(int id, const std::string& name, const std::string& description, int quantity, double unitPrice)
+    : id_(id), name_(name), description_(description), quantity_(quantity), unitPrice_(unitPrice) {}
 
-std::string Item::getName() const {
-    return name_;
-}
+// Getters
+int Item::getId() const { return id_; }
+std::string Item::getName() const { return name_; }
+std::string Item::getDescription() const { return description_; }
+int Item::getQuantity() const { return quantity_; }
+double Item::getUnitPrice() const { return unitPrice_; }
 
-int Item::getId() const {
-    return id_;
-}
-
-double Item::getPrice() const {
-    return price_;
-}
-
-int Item::getQuantity() const {
-    return quantity_;
-}
-
-void Item::setName(const std::string& name) {
-    name_ = name;
-}
-
-void Item::setPrice(double price) {
-    price_ = price;
-}
-
-void Item::setQuantity(int quantity) {
-    quantity_ = quantity;
-}
+// Setters
+void Item::setName(const std::string& name) { name_ = name; }
+void Item::setDescription(const std::string& description) { description_ = description; }
+void Item::setQuantity(int quantity) { quantity_ = quantity; }
+void Item::setUnitPrice(double unitPrice) { unitPrice_ = unitPrice; }

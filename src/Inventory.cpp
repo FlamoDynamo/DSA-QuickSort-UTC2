@@ -1,76 +1,67 @@
 #include "Inventory.h"
+#include <algorithm> // for std::swap (used in swapItems)
 
 Inventory::Inventory() {}
 
 void Inventory::addItem(const Item& item) {
-    items_.push_back(new Item(item));
+    items_.push_back(item);
 }
 
-void Inventory::removeItem(int id) {
-    for (size_t i = 0; i < items_.size(); ++i) {
-        if (items_[i]->getId() == id) {
-            delete items_[i];
-            items_.erase(items_.begin() + i);
+void Inventory::updateItem(int itemId, const Item& updatedItem) {
+    for (Item& item : items_) {
+        if (item.getId() == itemId) {
+            item = updatedItem; // Update the item
             return;
         }
     }
 }
 
-void Inventory::updateItemQuantity(int id, int newQuantity) {
-    for (size_t i = 0; i < items_.size(); ++i) {
-        if (items_[i]->getId() == id) {
-            items_[i]->setQuantity(newQuantity);
-            return;
+void Inventory::deleteItem(int itemId) {
+    items_.erase(std::remove_if(items_.begin(), items_.end(), 
+                                 [itemId](const Item& item) { return item.getId() == itemId; }), 
+                 items_.end());
+}
+
+Item* Inventory::findItemById(int itemId) {
+    for (Item& item : items_) {
+        if (item.getId() == itemId) {
+            return &item;
         }
     }
+    return nullptr; // Not found
 }
 
-Item* Inventory::findItem(int id) {
-    for (size_t i = 0; i < items_.size(); ++i) {
-        if (items_[i]->getId() == id) {
-            return items_[i];
-        }
-    }
-    return nullptr;
-}
-
-std::vector<Item*> Inventory::getItems() const {
-    return items_;
-}
-
-void Inventory::sortInventory(const std::string& attribute) {
-    quickSort(items_, 0, items_.size() - 1, attribute);
-}
-
-void Inventory::quickSort(std::vector<Item*>& items, int low, int high, const std::string& attribute) {
+// --- Quick Sort Implementation --- 
+void Inventory::quickSort(std::vector<Item>& items, int low, int high, 
+                         bool (*compare)(const Item&, const Item&)) {
     if (low < high) {
-        int pi = partition(items, low, high, attribute);
-
-        quickSort(items, low, pi - 1, attribute);
-        quickSort(items, pi + 1, high, attribute);
+        int pi = partition(items, low, high, compare);
+        quickSort(items, low, pi - 1, compare);
+        quickSort(items, pi + 1, high, compare);
     }
 }
 
-int Inventory::partition(std::vector<Item*>& items, int low, int high, const std::string& attribute) {
-    Item* pivot = items[high];
-
+int Inventory::partition(std::vector<Item>& items, int low, int high, 
+                          bool (*compare)(const Item&, const Item&)) {
+    Item pivot = items[high];
     int i = (low - 1);
 
     for (int j = low; j <= high - 1; j++) {
-        if (attribute == "id" && items[j]->getId() < pivot->getId()) {
+        if (compare(items[j], pivot)) {
             i++;
-            std::swap(items[i], items[j]);
-        } else if (attribute == "name" && items[j]->getName() < pivot->getName()) {
-            i++;
-            std::swap(items[i], items[j]);
-        } else if (attribute == "price" && items[j]->getPrice() < pivot->getPrice()) {
-            i++;
-            std::swap(items[i], items[j]);
-        } else if (attribute == "quantity" && items[j]->getQuantity() < pivot->getQuantity()) {
-            i++;
-            std::swap(items[i], items[j]);
+            swapItems(items[i], items[j]);
         }
     }
-    std::swap(items[i + 1], items[high]);
+    swapItems(items[i + 1], items[high]);
     return (i + 1);
+}
+
+void Inventory::swapItems(Item& item1, Item& item2) {
+    std::swap(item1, item2); // Use std::swap for efficiency
+}
+
+// --- Sorting Functionality ---
+
+void Inventory::sortBy(bool (*compare)(const Item&, const Item&)) {
+    quickSort(items_, 0, items_.size() - 1, compare);
 }

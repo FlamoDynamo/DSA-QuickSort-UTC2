@@ -60,5 +60,5 @@ Item item("Laptop", 1, 1200, 10);
 std::cout << "Name: " << item.getName() << std::endl;
 std::cout << "ID: " << item.getId() << std::endl;
 std::cout << "Price: " << item.getPrice() << std::endl;
-```
 std::cout << "Quantity: " << item.getQuantity() << std::endl;
+```

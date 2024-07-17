@@ -1,0 +1,49 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(InventoryManagementSystem)
+
+# Find and include Google Test
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+# Set source files
+set(SOURCE_FILES
+    main.cpp
+    Item.cpp
+    Inventory.cpp
+    Database.cpp
+    ReportGenerator.cpp
+    UI.cpp
+)
+
+# Set test files
+set(TEST_FILES
+    tests/ItemTest.cpp
+    tests/InventoryTest.cpp
+    tests/DatabaseTest.cpp
+    tests/ReportGeneratorTest.cpp
+    tests/UI_Test.cpp
+)
+
+# Add executable target
+add_executable(InventoryManagementSystem ${SOURCE_FILES})
+
+# Add test target
+add_executable(InventoryManagementSystemTests ${TEST_FILES})
+target_link_libraries(InventoryManagementSystemTests gtest gtest_main)
+
+# Set output directory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
+# Set include directories
+include_directories(include)
+
+# Add data files
+add_data(InventoryManagementSystem data/items.txt)
+
+# Set build type
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()

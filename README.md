@@ -32,3 +32,21 @@ This project implements a simple inventory management system using C++.
 Run the executable:
    ```
    ./bin/InventoryManagementSystem
+
+# Documentation
+## Item Class
+The Item class represents a single item in the inventory. It stores the following information:
+
+* **Name**: The name of the item.
+* **ID**: A unique identifier for the item.
+* **Price**: The price of the item.
+* **Quantity**: The current quantity of the item in stock.
+
+### Methods
+* **getName()*: Returns the name of the item.
+* **getId()**: Returns the ID of the item.
+* **getPrice()**: Returns the price of the item.
+* **getQuantity()**: Returns the quantity of the item.
+* **setName(const std::string& name)**: Sets the name of the item.
+* **setPrice(double price)**: Sets the price of the item.
+* **setQuantity(int quantity)**: Sets the quantity of the item.

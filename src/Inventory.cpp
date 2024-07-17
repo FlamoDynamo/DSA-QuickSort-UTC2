@@ -1,5 +1,4 @@
 #include "Inventory.h"
-#include <algorithm> // for std::swap (used in swapItems)
 
 Inventory::Inventory() {}
 
@@ -49,15 +48,17 @@ int Inventory::partition(std::vector<Item>& items, int low, int high,
     for (int j = low; j <= high - 1; j++) {
         if (compare(items[j], pivot)) {
             i++;
-            swapItems(items[i], items[j]);
+            // Manual swap implementation:
+            Item temp = items[i];
+            items[i] = items[j];
+            items[j] = temp;
         }
     }
-    swapItems(items[i + 1], items[high]);
+    // Manual swap for pivot:
+    Item temp = items[i + 1];
+    items[i + 1] = items[high];
+    items[high] = temp;
     return (i + 1);
-}
-
-void Inventory::swapItems(Item& item1, Item& item2) {
-    std::swap(item1, item2); // Use std::swap for efficiency
 }
 
 // --- Sorting Functionality ---

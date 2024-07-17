@@ -31,5 +31,4 @@ This project implements a simple inventory management system using C++.
    make
 Run the executable:
 ```
-Copy
 ./bin/InventoryManagementSystem

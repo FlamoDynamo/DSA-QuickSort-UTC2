@@ -1,0 +1,32 @@
+Laptop,1,1200,10
+Keyboard,2,50,20
+Mouse,3,25,30
+Monitor,4,300,15
+Webcam,5,50,25
+Headset,6,75,10
+Printer,7,150,5
+Tablet,8,350,12
+Smartphone,9,500,8
+Charger,10,20,40
+Case,11,30,50
+Screen Protector,12,10,60
+Memory Card,13,25,35
+USB Drive,14,15,45
+External Hard Drive,15,100,10
+Power Bank,16,40,20
+Bluetooth Speaker,17,60,15
+Wireless Mouse,18,40,25
+Gaming Mouse,19,80,10
+Gaming Keyboard,20,100,15
+Gaming Headset,21,150,8
+Gaming Monitor,22,500,5
+Smartwatch,23,200,12
+Fitness Tracker,24,100,18
+Portable Projector,25,250,6
+Digital Camera,26,400,4
+Drone,27,500,3
+Action Camera,28,200,10
+VR Headset,29,350,7
+Smart Home Hub,30,150,15
+Smart Bulb,31,20,30
+Smart Plug,32,15,40

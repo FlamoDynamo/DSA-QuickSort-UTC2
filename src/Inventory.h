@@ -17,7 +17,6 @@ public:
     void sortBy(bool (*compare)(const Item&, const Item&)); 
     // Helper Functions for Sorting
     int partition(std::vector<Item>& items, int low, int high, bool (*compare)(const Item&, const Item&));
-    void swapItems(Item& item1, Item& item2);
     // Other Inventory Operations (To be implemented)
     // ... 
 private:

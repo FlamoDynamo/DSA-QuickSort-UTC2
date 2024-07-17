@@ -52,3 +52,13 @@ The Item class represents a single item in the inventory. It stores the followin
 * **setName(const std::string& name)**: Sets the name of the item.
 * **setPrice(double price)**: Sets the price of the item.
 * **setQuantity(int quantity)**: Sets the quantity of the item.
+
+Example
+```c
+Item item("Laptop", 1, 1200, 10);
+
+std::cout << "Name: " << item.getName() << std::endl;
+std::cout << "ID: " << item.getId() << std::endl;
+std::cout << "Price: " << item.getPrice() << std::endl;
+```
+std::cout << "Quantity: " << item.getQuantity() << std::endl;

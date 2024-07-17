@@ -45,7 +45,7 @@ The Item class represents a single item in the inventory. It stores the followin
 * **Quantity**: The current quantity of the item in stock.
 
 ### Methods
-* **getName()*: Returns the name of the item.
+* **getName()**: Returns the name of the item.
 * **getId()**: Returns the ID of the item.
 * **getPrice()**: Returns the price of the item.
 * **getQuantity()**: Returns the quantity of the item.

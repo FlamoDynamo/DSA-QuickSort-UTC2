@@ -31,7 +31,7 @@ This project implements a simple inventory management system using C++.
    make
    ```
 Run the executable:
-   ```
+   ```bash
    ./bin/InventoryManagementSystem
    ```
 

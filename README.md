@@ -29,9 +29,11 @@ This project implements a simple inventory management system using C++.
    ```bash
    cmake .
    make
+   ```
 Run the executable:
    ```
    ./bin/InventoryManagementSystem
+   ```
 
 # Documentation
 ## Item Class

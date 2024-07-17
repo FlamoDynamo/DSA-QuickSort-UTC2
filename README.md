@@ -30,6 +30,6 @@ This project implements a simple inventory management system using C++.
    cmake .
    make
 Run the executable:
-bash
+```
 Copy
 ./bin/InventoryManagementSystem
